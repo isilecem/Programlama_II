@@ -1,0 +1,41 @@
+1)
+import bs4 as bs
+import urllib.request
+kaynak=urllib.request.urlopen('http://ybs.deu.edu.tr').read()
+print (kaynak)
+2)
+import bs4 as bs
+import urllib.request
+kaynak=urllib.request.urlopen('http://ybs.deu.edu.tr').read()
+#print (kaynak)
+sayfa=bs.BeautifulSoup(kaynak,’lxml’)
+print (sayfa)
+3)
+print (sayfa.title)
+4) title kodunu yazmadan ekrana ge
+print (sayfa.title.string)
+5) paragrafları göstersin
+print (sayfa.findAll(‘p’))
+6) herbiri, bir döngü olacak şekilde paragrafları bölsün
+import bs4 as bs
+import urllib.request
+kaynak=urllib.request.urlopen('http://ybs.deu.edu.tr').read()
+#print (kaynak)
+sayfa=bs.BeautifulSoup(kaynak,’lxml’)
+for paragraf in sayfa.findAll(‘p’):
+	print(paragraf.string)
+7) bütün sayfadaki a etiketlerinin herbirini url etiketi içine atarak karşımıza getirecek
+for url in sayfa.findAll(‘a’):
+	print(url)
+8) sadece linkleri istiyorsak
+for url in sayfa.findAll(‘a’):
+	print(url.href)
+9) 
+import bs4 as bs
+import urllib.request
+kaynak=urllib.request.urlopen('http://ybs.deu.edu.tr').read()
+sayfa=bs.BeautifulSoup(kaynak,’lxml’)
+menu=sayfa.nav
+print(menu)
+for url in menu.findAll(‘a’):
+	print(url.get(‘href’))
