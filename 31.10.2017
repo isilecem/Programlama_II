@@ -1,0 +1,8 @@
+import bs4 as bs
+import urllib.request
+
+kaynak=urllib.request.urlopen('http://www.tev.org.tr/burslarimiz/detay/Yurt-Ici-Burslarimiz/43/39/0').read()
+sayfa=bs.BeautifulSoup(kaynak,'lxml')
+
+for paragraf in sayfa.findAll('p'):
+    print (paragraf.string)
